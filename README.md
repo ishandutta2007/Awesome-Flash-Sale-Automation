@@ -1,44 +1,60 @@
-# Awesome Flash Sale Automation [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome Flash Sale Automation Banner" width="100%" />
+</p>
 
-> A curated list of production-grade **Flash Sale Automation** platforms, high-concurrency inventory reservation engines, drop infrastructure, and campaign scheduling tools.
+# ⚡ Awesome Flash Sale Automation 🛍️
+
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesmme"/></a>
+  <a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://awesome.re/badge.svg" alt="Mentioned in Awesome Awesome Awesome" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Flash-Sale-Automation/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Flash-Sale-Automation?style=flat-square&color=yellow" alt="GitHub Stars" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Flash-Sale-Automation/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-Flash-Sale-Automation?style=flat-square&color=blue" alt="GitHub Forks" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Flash-Sale-Automation/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="License" /></a>
+  <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
+</p>
+
+> 🚀 A curated list of production-grade **Flash Sale Automation** platforms, high-concurrency inventory reservation engines, drop infrastructure, and campaign scheduling tools.
 
 ---
 
-## Overview
+## 📖 Overview
 
 **Flash Sale Automation** enables e-commerce merchants, high-traffic retailers, and ticketing platforms to execute time-limited drops and viral flash sales without downtime or inventory disasters. These systems orchestrate the entire promotion lifecycle:
-- **Pre-Sale & Gating**: Countdown clocks, virtual waiting rooms, queue throttling, bot mitigation, and scheduled feature flags.
-- **Drop Concurrency**: Atomic in-memory stock reservation (Redis Lua, Go concurrency, memory barriers) ensuring **zero overselling** and eliminating race conditions.
-- **Lifecycle Automation**: Automated start/end time triggers, theme swapping, real-time dynamic pricing, and instant post-sale price/inventory restoration.
+- 🛡️ **Pre-Sale & Gating**: Countdown clocks, virtual waiting rooms, queue throttling, bot mitigation, and scheduled feature flags.
+- ⚡ **Drop Concurrency**: Atomic in-memory stock reservation (Redis Lua, Go concurrency, memory barriers) ensuring **zero overselling** and eliminating race conditions.
+- 🔄 **Lifecycle Automation**: Automated start/end time triggers, theme swapping, real-time dynamic pricing, and instant post-sale price/inventory restoration.
 
 ---
 
-## Table of Contents
+## 📑 Table of Contents
 
-- [Sector Overview & Market Dynamics](#sector-overview--market-dynamics)
-- [SaaS & Hosted Platforms](#saas--hosted-platforms)
-- [Open-Source GitHub Projects](#open-source-github-projects)
-  - [High-Concurrency Inventory & Drops](#high-concurrency-inventory--drops)
-  - [Feature Flags & Campaign Schedulers](#feature-flags--campaign-schedulers)
-  - [Promotion Rule Engines](#promotion-rule-engines)
-  - [Full-Stack E-Commerce & Mall Implementations](#full-stack-e-commerce--mall-implementations)
-- [Architecture Blueprint](#architecture-blueprint)
-- [How to Contribute](#how-to-contribute)
-- [Disclaimer](#disclaimer)
+- [📊 Sector Overview & Market Dynamics](#-sector-overview--market-dynamics)
+- [☁️ SaaS & Hosted Platforms](#️-saas--hosted-platforms)
+- [💻 Open-Source GitHub Projects](#-open-source-github-projects)
+  - [🚀 High-Concurrency Inventory & Drops](#-high-concurrency-inventory--drops)
+  - [🎛️ Feature Flags & Campaign Schedulers](#️-feature-flags--campaign-schedulers)
+  - [🏷️ Promotion Rule Engines](#️-promotion-rule-engines)
+  - [🏬 Full-Stack E-Commerce & Mall Implementations](#-full-stack-e-commerce--mall-implementations)
+- [🏗️ Architecture Blueprint](#️-architecture-blueprint)
+- [🤝 How to Contribute](#-how-to-contribute)
+- [💖 Support](#-support)
+- [📈 Star History](#-star-history)
+- [⚠️ Disclaimer](#️-disclaimer)
 
 ---
 
-## Sector Overview & Market Dynamics
+## 📊 Sector Overview & Market Dynamics
 
 The global **Flash Sale Orchestration and High-Concurrency Promotion Automation** sector is estimated at **$1.95 billion in 2026** (growing at ~16.8% CAGR), nested inside the broader **$22.6 billion E-Commerce Automation market**.
 
 Market dynamics reflect a **moderately fragmented, bifurcated ecosystem** rather than a single winner-take-all monopoly:
-- **Enterprise All-in-One Giants (Concentrated Top Tier)**: Mega-cap platforms like Shopify Plus (Launchpad), Salesforce Commerce Cloud, and Adobe Commerce capture large enterprise retailers looking for turnkey campaign and theme scheduling.
-- **Specialized Best-of-Breed Middleware (Fragmented Layer)**: High-concurrency inventory protection, feature flagging (LaunchDarkly, GrowthBook), and real-time behavioral personalization (Dynamic Yield, Bloomreach, Optimizely) remain highly contested across specialized vendors and open-source stacks due to distinct architectural trade-offs between latency, database locking, and campaign flexibility.
+- 🏢 **Enterprise All-in-One Giants (Concentrated Top Tier)**: Mega-cap platforms like Shopify Plus (Launchpad), Salesforce Commerce Cloud, and Adobe Commerce capture large enterprise retailers looking for turnkey campaign and theme scheduling.
+- 🧩 **Specialized Best-of-Breed Middleware (Fragmented Layer)**: High-concurrency inventory protection, feature flagging (LaunchDarkly, GrowthBook), and real-time behavioral personalization (Dynamic Yield, Bloomreach, Optimizely) remain highly contested across specialized vendors and open-source stacks due to distinct architectural trade-offs between latency, database locking, and campaign flexibility.
 
 ---
 
-## SaaS & Hosted Platforms
+## ☁️ SaaS & Hosted Platforms
 
 The table below lists leading commercial SaaS and hosted platforms for flash sale execution, ordered by **Company Scale (Market Cap / Valuation / Revenue)** descending.
 
@@ -57,11 +73,11 @@ The table below lists leading commercial SaaS and hosted platforms for flash sal
 
 ---
 
-## Open-Source GitHub Projects
+## 💻 Open-Source GitHub Projects
 
 Curated open-source projects for building custom, self-hosted flash sale infrastructure—sorted by **GitHub Star Count** descending.
 
-### High-Concurrency Inventory & Drops
+### 🚀 High-Concurrency Inventory & Drops
 
 | Repository | Stars | Language / Stack | Architecture & Description |
 | :--- | :--- | :--- | :--- |
@@ -76,7 +92,7 @@ Curated open-source projects for building custom, self-hosted flash sale infrast
 | **[yaumulmajid/zero-oversell-commerce](https://github.com/yaumulmajid/zero-oversell-commerce)** | [![Stars](https://img.shields.io/github/stars/yaumulmajid/zero-oversell-commerce?style=social&color=white)](https://github.com/yaumulmajid/zero-oversell-commerce/stargazers) | Java 21, Spring Boot, Kafka, PostgreSQL | Clean architectural microservice demonstrating conditional stock decrement (`UPDATE ... WHERE qty > 0`) with transactional outbox and expiry handling. |
 | **[FlashCore](https://pypi.org/project/syeedalireza-flashcore/0.1.0/)** | *(PyPI Package)* | Python, FastAPI, Redis Lua | High-concurrency flash sale drop engine utilizing atomic Redis Lua scripts to eliminate race conditions, paired with PostgreSQL eventual consistency and Docker Compose. |
 
-### Feature Flags & Campaign Schedulers
+### 🎛️ Feature Flags & Campaign Schedulers
 
 | Repository | Stars | Language / Stack | Architecture & Description |
 | :--- | :--- | :--- | :--- |
@@ -85,14 +101,14 @@ Curated open-source projects for building custom, self-hosted flash sale infrast
 | **[philiprehberger/laravel-feature-flags](https://github.com/philiprehberger/laravel-feature-flags)** | [![Stars](https://img.shields.io/github/stars/philiprehberger/laravel-feature-flags?style=social&color=white)](https://github.com/philiprehberger/laravel-feature-flags/stargazers) | PHP, Laravel | Lightweight feature flag package supporting time-scheduled flags (`enabled_from`, `enabled_until`) and percentage rollouts for timed drops. |
 | **[jewel998/config](https://github.com/jewel998/config)** | [![Stars](https://img.shields.io/github/stars/jewel998/config?style=social&color=white)](https://github.com/jewel998/config/stargazers) | TypeScript, Firebase | Lightweight, serverless feature flag alternative to commercial flag platforms with scheduled flag changes and client/server SDKs. |
 
-### Promotion Rule Engines
+### 🏷️ Promotion Rule Engines
 
 | Repository | Stars | Language / Stack | Architecture & Description |
 | :--- | :--- | :--- | :--- |
 | **[weijunlike/rule-engine](https://github.com/weijunlike/rule-engine)** | [![Stars](https://img.shields.io/github/stars/weijunlike/rule-engine?style=social&color=white)](https://github.com/weijunlike/rule-engine/stargazers) | PHP, Composer | Cart promotion rule engine supporting tiered discounts, member pricing, and an independent rule mode tailored specifically for flash sales and single-coupon locks. |
 | **[jerry-maheswara-github/promotion_kit](https://github.com/jerry-maheswara-github/promotion_kit)** | [![Stars](https://img.shields.io/github/stars/jerry-maheswara-github/promotion_kit?style=social&color=white)](https://github.com/jerry-maheswara-github/promotion_kit/stargazers) | Rust, Cargo | High-performance Rust library for dynamic promotional rule evaluation, voucher validation, usage quota enforcement, and time-window restrictions. |
 
-### Full-Stack E-Commerce & Mall Implementations
+### 🏬 Full-Stack E-Commerce & Mall Implementations
 
 | Repository | Stars | Language / Stack | Architecture & Description |
 | :--- | :--- | :--- | :--- |
@@ -101,7 +117,7 @@ Curated open-source projects for building custom, self-hosted flash sale infrast
 
 ---
 
-## Architecture Blueprint
+## 🏗️ Architecture Blueprint
 
 Building a resilient, zero-oversell flash sale system requires a multi-tier defense architecture:
 
@@ -129,25 +145,42 @@ Building a resilient, zero-oversell flash sale system requires a multi-tier defe
 └─────────────────────────────────┘
 ```
 
-1. **Edge Protection**: Absorb 90% of repeated polling traffic via CDN caching and virtual waiting rooms.
-2. **Scheduled Activation**: Open product pages down to the exact second via synchronized feature flag schedules.
-3. **Atomic Decrement**: Never issue `SELECT ... FOR UPDATE` directly to relational databases during peak spikes. Use atomic Redis Lua scripts or memory-mapped log engines like **Kavach Engine**.
-4. **Asynchronous Fulfillment**: Push confirmed reservations to Kafka/RabbitMQ for decoupled payment processing, cart timeout expiration workers, and final DB persistence.
+1. 🌐 **Edge Protection**: Absorb 90% of repeated polling traffic via CDN caching and virtual waiting rooms.
+2. ⏱️ **Scheduled Activation**: Open product pages down to the exact second via synchronized feature flag schedules.
+3. 🔒 **Atomic Decrement**: Never issue `SELECT ... FOR UPDATE` directly to relational databases during peak spikes. Use atomic Redis Lua scripts or memory-mapped log engines like **Kavach Engine**.
+4. 📨 **Asynchronous Fulfillment**: Push confirmed reservations to Kafka/RabbitMQ for decoupled payment processing, cart timeout expiration workers, and final DB persistence.
 
 ---
 
-## How to Contribute
+## 🤝 How to Contribute
 
-1. Fork this repository.
-2. Add your tool or library following the table formatting conventions:
+1. 🍴 Fork this repository.
+2. 📝 Add your tool or library following the table formatting conventions:
    - Provide exact pricing and free tier/trial limits for SaaS products.
    - Include official GitHub stargazer badges (`style=social&color=white`) linking to the stargazers page for open-source repositories.
-3. Keep descriptions concise, factual, and architecturally focused.
-4. Submit a Pull Request.
+3. 🎯 Keep descriptions concise, factual, and architecturally focused.
+4. 🚀 Submit a Pull Request.
 
 ---
 
-## Disclaimer
+## 💖 Support
+
+Thank you for exploring this curated guide to flash sale automation! If this repository has helped you scale your flash sale architectures, safeguard inventory, or prevent overselling incidents:
+
+- ⭐ **Star this repository** to show your appreciation and help others discover it.
+- 🍴 **Fork and contribute** new tools, benchmarks, and architectures.
+- 📢 **Share it** with fellow e-commerce architects and backend developers on Twitter, LinkedIn, and Discord.
+- ☕ **Buy me a coffee**: If you'd like to support the ongoing maintenance and curation of open-source research lists, visit the [Sponsor Dashboard](https://github.com/sponsors/ishandutta2007).
+
+---
+
+## 📈 Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=ishandutta2007/Awesome-Flash-Sale-Automation&type=date&legend=top-left)](https://star-history.dera.page/#ishandutta2007/Awesome-Flash-Sale-Automation&type=date&legend=top-left)
+
+---
+
+## ⚠️ Disclaimer
 
 - This list is community-curated for informational purposes and does not constitute commercial endorsement.
 - Flash sale systems handling payment transactions and customer identities must adhere to PCI DSS and local data compliance regulations.
@@ -155,4 +188,6 @@ Building a resilient, zero-oversell flash sale system requires a multi-tier defe
 
 ---
 
-**Maintained by the open-source community for e-commerce architects, high-concurrency engineers, and DevOps teams.**
+<p align="center">
+  <b>⚡ Maintained with care by the open-source community for e-commerce architects, high-concurrency engineers, and DevOps teams.</b>
+</p>
