@@ -8,7 +8,7 @@
   <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesmme"/></a>
   <a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
   <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://awesome.re/badge.svg" alt="Mentioned in Awesome Awesome Awesome" /></a>
-  <a href="https://github.com/ishandutta2007/Awesome-Flash-Sale-Automation/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Flash-Sale-Automation?style=flat-square&color=yellow" alt="GitHub Stars" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Flash-Sale-Automation/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Flash-Sale-Automation?style=flat-square&color=yellow" alt="GitHub_Stars" /></a>
   <a href="https://github.com/ishandutta2007/Awesome-Flash-Sale-Automation/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-Flash-Sale-Automation?style=flat-square&color=blue" alt="GitHub Forks" /></a>
   <a href="https://github.com/ishandutta2007/Awesome-Flash-Sale-Automation/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="License" /></a>
   <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
@@ -75,11 +75,11 @@ The table below lists leading commercial SaaS and hosted platforms for flash sal
 
 ## 💻 Open-Source GitHub Projects
 
-Curated open-source projects for building custom, self-hosted flash sale infrastructure—sorted by **GitHub Star Count** descending.
+Curated open-source projects for building custom, self-hosted flash sale infrastructure—sorted by **GitHub Stars_Count** descending.
 
 ### 🚀 High-Concurrency Inventory & Drops
 
-| Repository | Stars | Language / Stack | Architecture & Description |
+| Repository | GitHub_Stars | Language / Stack | Architecture & Description |
 | :--- | :--- | :--- | :--- |
 | **[qiurunze123/miaosha](https://github.com/qiurunze123/miaosha)** | [![Stars](https://img.shields.io/github/stars/qiurunze123/miaosha?style=social&color=white)](https://github.com/qiurunze123/miaosha/stargazers) | Java, Spring Boot, Redis, RabbitMQ | Comprehensive enterprise flash sale blueprint: multi-layer caching, Redis pre-decrement, asynchronous message queue order generation, and Nginx Lua traffic limiting. |
 | **[zaiyunduan123/springboot-seckill](https://github.com/zaiyunduan123/springboot-seckill)** | [![Stars](https://img.shields.io/github/stars/zaiyunduan123/springboot-seckill?style=social&color=white)](https://github.com/zaiyunduan123/springboot-seckill/stargazers) | Java, Spring Boot, Redis, Guava | High-concurrency flash sale system implementing Guava rate limiting, Redis distributed locking, RabbitMQ queuing, and MD5 salt password encryption. |
@@ -94,7 +94,7 @@ Curated open-source projects for building custom, self-hosted flash sale infrast
 
 ### 🎛️ Feature Flags & Campaign Schedulers
 
-| Repository | Stars | Language / Stack | Architecture & Description |
+| Repository | GitHub_Stars | Language / Stack | Architecture & Description |
 | :--- | :--- | :--- | :--- |
 | **[growthbook/growthbook](https://github.com/growthbook/growthbook)** | [![Stars](https://img.shields.io/github/stars/growthbook/growthbook?style=social&color=white)](https://github.com/growthbook/growthbook/stargazers) | TypeScript, Node.js, React | Leading open-source feature flagging and A/B testing platform with scheduled rollouts, experiment tracking, and user segmentation for drops. |
 | **[Flagsmith/flagsmith](https://github.com/Flagsmith/flagsmith)** | [![Stars](https://img.shields.io/github/stars/Flagsmith/flagsmith?style=social&color=white)](https://github.com/Flagsmith/flagsmith/stargazers) | Python, Django, PostgreSQL | Complete self-hosted feature flag and remote configuration platform with scheduling, multivariate flags, and segments for gating sale availability. |
@@ -103,14 +103,14 @@ Curated open-source projects for building custom, self-hosted flash sale infrast
 
 ### 🏷️ Promotion Rule Engines
 
-| Repository | Stars | Language / Stack | Architecture & Description |
+| Repository | GitHub_Stars | Language / Stack | Architecture & Description |
 | :--- | :--- | :--- | :--- |
 | **[weijunlike/rule-engine](https://github.com/weijunlike/rule-engine)** | [![Stars](https://img.shields.io/github/stars/weijunlike/rule-engine?style=social&color=white)](https://github.com/weijunlike/rule-engine/stargazers) | PHP, Composer | Cart promotion rule engine supporting tiered discounts, member pricing, and an independent rule mode tailored specifically for flash sales and single-coupon locks. |
 | **[jerry-maheswara-github/promotion_kit](https://github.com/jerry-maheswara-github/promotion_kit)** | [![Stars](https://img.shields.io/github/stars/jerry-maheswara-github/promotion_kit?style=social&color=white)](https://github.com/jerry-maheswara-github/promotion_kit/stargazers) | Rust, Cargo | High-performance Rust library for dynamic promotional rule evaluation, voucher validation, usage quota enforcement, and time-window restrictions. |
 
 ### 🏬 Full-Stack E-Commerce & Mall Implementations
 
-| Repository | Stars | Language / Stack | Architecture & Description |
+| Repository | GitHub_Stars | Language / Stack | Architecture & Description |
 | :--- | :--- | :--- | :--- |
 | **[yudaocode/yudao-mall-uniapp](https://github.com/yudaocode/yudao-mall-uniapp)** | [![Stars](https://img.shields.io/github/stars/yudaocode/yudao-mall-uniapp?style=social&color=white)](https://github.com/yudaocode/yudao-mall-uniapp/stargazers) | Vue 3, Uniapp, TypeScript | 100% open-source mobile mall frontend with native support for flash sales (秒杀), group buying, countdown timers, coupons, and live shopping. |
 | **[newbee-ltd/newbee-mall-plus](https://github.com/newbee-ltd/newbee-mall-plus)** | [![Stars](https://img.shields.io/github/stars/newbee-ltd/newbee-mall-plus?style=social&color=white)](https://github.com/newbee-ltd/newbee-mall-plus/stargazers) | Java, Spring Boot, Vue | End-to-end e-commerce system featuring integrated flash sale modules, coupon distribution, payment integration, and inventory locking. |
