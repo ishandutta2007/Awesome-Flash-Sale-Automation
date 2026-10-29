@@ -1,223 +1,158 @@
-# Awesome-Flash-Sale-Automation
+# Awesome Flash Sale Automation [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-## Top Flash Sale Automation Ecosystem
-
-
-
-**Curated List of SaaS Products & Open-Source GitHub Projects**  
-
-*Focused on High-Concurrency Inventory Engines, Scheduled Campaigns & Self-Hosted Drop Infrastructure*  
-
-**Last updated: October 2026**
-
-
-
-This repository tracks notable **SaaS platforms** and **open-source projects** for **Flash Sale Automation**. These tools enable merchants to schedule time-limited promotions, protect inventory under extreme traffic spikes, prevent overselling, and coordinate the full lifecycle of a flash sale—from countdown display to automatic price restoration.
-
-
-
-**Examples** include Shopify Launchpad, Salesforce Commerce Cloud Einstein, BigCommerce Staging, Adobe Commerce Launch, Bloomreach Engagement, Dynamic Yield, Optimizely Feature Experimentation, LaunchDarkly, Kameleoon, and Monetate (the category leaders).
-
-
-
-**Open-source emphasis**: Flash Sale Automation is a domain where open-source tooling is **surprisingly strong at the engine layer but fragmented at the platform layer**. The most important distinction: commercial SaaS platforms like Shopify Launchpad or LaunchDarkly handle *campaign scheduling and feature toggling*, while open-source projects like **Kavach Engine** and **FlashCore** handle the *high-concurrency inventory reservation* that prevents overselling during the actual drop . **Kavach Engine** is the standout—a Go-based inventory-reservation engine with reproducible benchmarks showing 2 million requests, zero double-sells, and crash-recovery via log replay . **FlashCore** provides a Redis Lua-based engine with Docker deployment and zero-oversell guarantees . For campaign scheduling at the feature-flag layer, **@jewel998/config** offers a self-hosted Firebase-based alternative with scheduled flag changes . However, **no open-source project combines both**—the campaign scheduling and the inventory protection—into a single turnkey platform like Shopify Launchpad.
-
-
-
-Contributions welcome! Open a PR to add/update entries. Keep descriptions factual and link to official sites.
-
-
-
-## Table of Contents
-
-- [SaaS/Hosted Platforms](#saas-products)
-
-- [Open-Source GitHub Projects](#open-source-github-projects)
-
-- [How to Contribute](#how-to-contribute)
-
-- [Disclaimer](#disclaimer)
-
-
-
-## SaaS/Hosted Platforms
-
-
-
-- **[Shopify Launchpad](https://apps.shopify.com/launchpad)**  
-
-  Shopify Plus exclusive tool for scheduling flash sales, product launches, and collection releases; automates discounts, theme changes, product visibility, and inventory updates with defined start/end dates, then restores everything automatically when the campaign ends . Integrates with Shopify Flow and Scripts for line-item automation.
-
-
-
-- **[Salesforce Commerce Cloud Einstein](https://www.salesforce.com/)**  
-
-  AI-powered personalization and campaign automation within Commerce Cloud; Einstein can surface flash sale promotions to likely converters and optimize timing based on predicted behavior.
-
-
-
-- **[BigCommerce Staging](https://www.bigcommerce.com/)**  
-
-  Staging environment for testing flash sale configurations (new products, categories, promotions) before pushing to production; supports scheduled sale events with automatic price restoration .
-
-
-
-- **[Adobe Commerce Launch (Content Staging)](https://business.adobe.com/)**  
-
-  Content Staging feature allows scheduling campaigns and promotions with start/end dates; you can preview special prices, promotion names, and date ranges before going live . Promotions are built as Price Rules and attached to scheduled campaigns.
-
-
-
-- **[Bloomreach Engagement](https://www.bloomreach.com/)**  
-
-  Customer engagement platform with **catalog triggers** that fire when prices drop, items are back in stock, or new products arrive—reaching only customers who showed interest . Also supports automated price-drop alert emails for cart abandonment recovery .
-
-
-
-- **[Dynamic Yield](https://www.dynamicyield.com/)**  
-
-  Personalization platform with **Price Drop campaigns** that track products a user interacted with for 30 days and notify them when the price drops by a configured percentage or amount .
-
-
-
-- **[Optimizely Feature Experimentation](https://www.optimizely.com/)**  
-
-  Feature flagging and experimentation platform with **scheduled changes** for flags and rules—turn flags on/off, adjust rollout percentages, or modify targeting at a future date/time . Useful for scheduling flash sale feature availability.
-
-
-
-- **[LaunchDarkly](https://launchdarkly.com/)**  
-
-  Feature management platform with **scheduled flag changes** for targeting rules; can schedule progressive rollouts, temporary access for campaign periods, and flag cleanup . The standard for controlled feature releases, applicable to flash sale gating.
-
-
-
-- **[Kameleoon](https://www.kameleoon.com/)**  
-
-  Personalization and experimentation platform; case study shows predictive targeting for flash sales achieved 3x higher conversion than random display .
-
-
-
-- **[Monetate](https://monetate.com/)**  
-
-  Personalization platform with **fixed start/stop times and dayparting** for scheduling experiences; explicitly supports timing for flash sales and short promotions, with Dynamic Testing to exploit winning variants during limited windows .
-
-
-
-## Open-Source GitHub Projects
-
-
-
-### High-Concurrency Inventory Engines
-
-
-
-- **[Kavach Engine](https://github.com/l72683876-beep/kavach-engine)**  
-
-  The most rigorously benchmarked open-source **flash sale inventory-reservation engine** available (Go, Python/JavaScript SDKs, MIT-style license) . Designed for *any* flash sale—e-commerce drops, ticketing, hotel bookings. Guarantees **zero double-sells** under extreme concurrency, with **reproducible benchmarks**: 2 million requests on a 2-core box, peak 3,077 req/s, zero errors, and **crash-recovery via log replay** (SIGKILL mid-rush, restart resumes from stored cursor with no double-sell). Includes a complete concert-ticketing demo app, acceptance tests, and video evidence of live runs. **The strongest foundation for building a self-hosted flash sale system**—but it is an *engine*, not a full campaign scheduler.
-
-
-
-- **[FlashCore](https://pypi.org/project/syeedalireza-flashcore/0.1.0/)**  
-
-  Enterprise-grade **high-concurrency drop engine** (Python/FastAPI, MIT) using **atomic Redis Lua scripts** to decrement inventory without race conditions, with PostgreSQL for eventual consistency . Features Docker Compose deployment, non-root containers, network isolation, and a comprehensive test suite. **A more accessible entry point than Kavach** for teams wanting a Python-based engine, though it has less public benchmark evidence.
-
-
-
-- **[Rust Ticket Sales Engine](https://github.com/topics/flash-sale)**  
-
-  High-throughput ticket sales engine in Rust for flash-sale traffic: 50,000 concurrent buyers, ~35,000 req/s, ~700 purchases/s on one machine with **zero oversold seats** . Uses Kafka-ordered virtual waiting room, atomic Redis seat holds (Lua), and PostgreSQL payment inbox. **The highest-throughput open-source option** for ticket/seat-based drops.
-
-
-
-- **[zero-oversell-commerce](https://github.com/yaumulmajid/zero-oversell-commerce)**  
-
-  Full-stack reference implementation (Go microservices, Kafka, PostgreSQL) demonstrating **conditional stock decrement** (`UPDATE ... WHERE qty > 0`) with transactional outbox for payment events . Includes campaign service, reservation service, payment service, and expiry worker. **The clearest architectural reference** for understanding the full flow from reservation to payment confirmation.
-
-
-
-### Campaign Scheduling & Feature Flags
-
-
-
-- **[@jewel998/config](https://socket.dev/npm/package/@jewel998/config)**  
-
-  Free, self-hostable **feature flag and remote configuration SDK** (Firebase-based) positioned as a **LaunchDarkly replacement at $0/month** . Features include **scheduled config changes** for future dates, targeting rules, percentage rollouts, segments, and audit logs. **The closest open-source alternative to LaunchDarkly's scheduled flag changes**—useful for scheduling flash sale feature availability, though it does not handle inventory.
-
-
-
-- **[laravel-feature-flags](https://laraplugins.io/plugins/philiprehberger/laravel-feature-flags)**  
-
-  Lightweight PHP/Laravel package with **scheduled flags** (`enabled_from`, `enabled_until`) and percentage rollouts . **Laravel-specific**—useful for PHP-based flash sale gating with time-based activation.
-
-
-
-### Promotion Rule Engines (Adjacent)
-
-
-
-- **[mcjy/rule-engine](https://github.com/weijunlike/rule-engine)**  
-
-  Flexible PHP promotion rule engine for shopping carts (Composer package); supports full discounts, tiered offers, member pricing, Nth-item discounts, and **"independent" mode where each product can only be discounted by one rule**—explicitly suited for **flash sales and exclusive coupons** . **Promotion logic-focused**—calculates discounts but does not handle inventory or scheduling.
-
-
-
-- **[promotion_kit](https://github.com/jerry-maheswara-github/promotion_kit)**  
-
-  Rust toolkit for managing promotions, vouchers, and discounts with validity periods, usage limits, and minimum transaction amounts . **Lightweight library** rather than a platform—useful as a building block for custom flash sale pricing logic.
-
-
-
-### Additional Strong Open-Source Options
-
-
-
-- **GitHub `flash-sale` topic** — 46+ public repositories covering Spring Boot Redis locking demos, OpenResty traffic gateways with waiting rooms, and Go/Java high-concurrency seckill systems . Quality and completeness vary widely—most are learning projects rather than production systems.
-
-- **yudao-mall-uniapp** — Vue3/Uniapp mall frontend with flash sale (秒杀), group buying, and coupon features . **Frontend-focused**—requires a backend and does not provide the high-concurrency engine.
-
-
-
-**Frameworks for building custom systems**: For **inventory protection under extreme load**, use **Kavach Engine** (Go, proven benchmarks, crash recovery) or **FlashCore** (Python, Redis Lua, Docker) . For **campaign scheduling at the feature-flag layer**, use **@jewel998/config** (self-hosted Firebase) or **laravel-feature-flags** (PHP) . For **promotion discount logic**, use **mcjy/rule-engine** (PHP, explicit flash sale mode) . No open-source project combines all three layers—a complete system requires assembling an inventory engine, a scheduling layer, and a rule engine, or using commercial platforms like Shopify Launchpad for the campaign side.
-
-
-
-## How to Contribute
-
-
-
-1. Fork the repo.
-
-2. Add/edit entries in `README.md` (follow existing format).
-
-3. Include: name, link, 1–2 sentence description, and whether it's SaaS or open-source.
-
-4. Submit PR with a short explanation.
-
-
-
-Star the repo if you find it useful!
-
-
-
-## Disclaimer
-
-
-
-- This is a **community-curated** list — not exhaustive and not an endorsement.
-
-- Flash sale systems handling payments and inventory must comply with applicable ecommerce regulations and PCI DSS for payment data; **overselling during a flash sale can create legal and reputational risk**, so inventory guarantees should be validated under load.
-
-- **Open-source flash sale automation is strongest at the engine layer**—Kavach Engine and FlashCore provide production-grade inventory protection with proven benchmarks . However, **no open-source project combines inventory protection with campaign scheduling and promotion management** in a single turnkey platform like Shopify Launchpad. Organizations requiring a complete managed solution should evaluate commercial platforms or plan for integration across multiple open-source components.
-
-- Verify license terms for commercial use; Kavach Engine and FlashCore are open-source (check repositories), @jewel998/config uses Elastic-2.0, and mcjy/rule-engine is a Composer package.
-
-
+> A curated list of production-grade **Flash Sale Automation** platforms, high-concurrency inventory reservation engines, drop infrastructure, and campaign scheduling tools.
 
 ---
 
+## Overview
 
+**Flash Sale Automation** enables e-commerce merchants, high-traffic retailers, and ticketing platforms to execute time-limited drops and viral flash sales without downtime or inventory disasters. These systems orchestrate the entire promotion lifecycle:
+- **Pre-Sale & Gating**: Countdown clocks, virtual waiting rooms, queue throttling, bot mitigation, and scheduled feature flags.
+- **Drop Concurrency**: Atomic in-memory stock reservation (Redis Lua, Go concurrency, memory barriers) ensuring **zero overselling** and eliminating race conditions.
+- **Lifecycle Automation**: Automated start/end time triggers, theme swapping, real-time dynamic pricing, and instant post-sale price/inventory restoration.
 
-**Made for ecommerce operations teams, flash sale engineers, high-concurrency system architects, and campaign managers.**  
+---
 
-Let's make flash sale automation more open, but with clear eyes about the integration gap between inventory engines and campaign platforms.
+## Table of Contents
+
+- [Sector Overview & Market Dynamics](#sector-overview--market-dynamics)
+- [SaaS & Hosted Platforms](#saas--hosted-platforms)
+- [Open-Source GitHub Projects](#open-source-github-projects)
+  - [High-Concurrency Inventory & Drops](#high-concurrency-inventory--drops)
+  - [Feature Flags & Campaign Schedulers](#feature-flags--campaign-schedulers)
+  - [Promotion Rule Engines](#promotion-rule-engines)
+  - [Full-Stack E-Commerce & Mall Implementations](#full-stack-e-commerce--mall-implementations)
+- [Architecture Blueprint](#architecture-blueprint)
+- [How to Contribute](#how-to-contribute)
+- [Disclaimer](#disclaimer)
+
+---
+
+## Sector Overview & Market Dynamics
+
+The global **Flash Sale Orchestration and High-Concurrency Promotion Automation** sector is estimated at **$1.95 billion in 2026** (growing at ~16.8% CAGR), nested inside the broader **$22.6 billion E-Commerce Automation market**.
+
+Market dynamics reflect a **moderately fragmented, bifurcated ecosystem** rather than a single winner-take-all monopoly:
+- **Enterprise All-in-One Giants (Concentrated Top Tier)**: Mega-cap platforms like Shopify Plus (Launchpad), Salesforce Commerce Cloud, and Adobe Commerce capture large enterprise retailers looking for turnkey campaign and theme scheduling.
+- **Specialized Best-of-Breed Middleware (Fragmented Layer)**: High-concurrency inventory protection, feature flagging (LaunchDarkly, GrowthBook), and real-time behavioral personalization (Dynamic Yield, Bloomreach, Optimizely) remain highly contested across specialized vendors and open-source stacks due to distinct architectural trade-offs between latency, database locking, and campaign flexibility.
+
+---
+
+## SaaS & Hosted Platforms
+
+The table below lists leading commercial SaaS and hosted platforms for flash sale execution, ordered by **Company Scale (Market Cap / Valuation / Revenue)** descending.
+
+| Platform | Company Scale (Valuation / Revenue) | Starting Tier Pricing | Free Tier Limits / Trial | Core Flash Sale Capabilities |
+| :--- | :--- | :--- | :--- | :--- |
+| **[Salesforce Commerce Cloud Einstein](https://www.salesforce.com/products/commerce-cloud/)** | **~$199B Market Cap** (~$37B+ ARR) | **1%–2% of Gross Merchandise Value (GMV)** (Growth tier contract; minimum commitments typically ~$150,000/year) | **No self-serve free trial** (Guided enterprise proof-of-concept / sandbox access via sales evaluation only) | AI-driven promotion targeting, automated flash campaign triggers, predictive conversion timing, and enterprise order management. |
+| **[Shopify Launchpad](https://apps.shopify.com/launchpad)** | **~$220B Market Cap** (~$10B+ ARR) | **$2,300/month** (Included with Shopify Plus 3-year plan; $2,500/month on 1-year term) | **No self-serve free trial** (Requires Shopify Plus merchant plan contract; standard Shopify 3-day trial does not grant Launchpad) | Native event scheduler for drops: automated start/end dates, collection publishing, bulk percentage/fixed discounts, theme swaps, and automatic price restoration. |
+| **[Adobe Commerce Launch](https://business.adobe.com/products/magento/magento-commerce.html)** | **~$100B Market Cap** (~$26B+ ARR) | **~$22,000/year** (~$1,833/month on-prem license for <$1M GMV; Cloud PaaS begins ~$40,000/year) | **No free trial** (Enterprise sales quote required; community alternative available via self-hosted Magento Open Source) | Content Staging & Price Rules engine for scheduling timed sales, previewing catalog discount states by date, and automated campaign sunsetting. |
+| **[LaunchDarkly](https://launchdarkly.com/)** | **~$3.0B Valuation** (~$100M+ ARR) | **$10–$12/service connection/month** (Foundation tier; usage-based model with unlimited seats and client MAU billing) | **Free forever plan**: 1 project, 3 environments, 5 service connections, and 1,000 client MAUs (plus 14-day full-feature trial) | Scheduled flag changes and progressive rollouts for gating flash drop access, feature toggles, and VIP access control under heavy traffic spikes. |
+| **[Optimizely Feature Experimentation](https://www.optimizely.com/products/experimentation/)** | **~$1.5B–$2.0B Valuation** (~$400M+ ARR) | **~$35,000–$40,000/year** (Contract-based pricing scaled by Monthly Active Users) | **Free forever tier (Optimizely Rollouts)**: Unlimited feature flags and instant rollouts, limited to 1 active concurrent experiment (no credit card required) | Scheduled flag triggers, rule modification at future timestamps, and dynamic variant testing during high-velocity flash campaigns. |
+| **[Bloomreach Engagement](https://www.bloomreach.com/en/products/engagement)** | **~$2.2B Valuation** (~$260M+ ARR) | **~$4,000/month** (Contract starting at ~$19,000–$60,000+/year depending on billable customer profiles and monthly visitors) | **No free trial** (Guided enterprise demo and structured customer implementation only) | Real-time catalog triggers that notify interested buyers when flash sale prices activate or inventory drops, coupled with automated cart-recovery workflows. |
+| **[Dynamic Yield](https://www.dynamicyield.com/)** | **$325M Acquisition** (by Mastercard; parent ~$450B Cap) | **~$35,000/year** (Enterprise contract scaled by traffic and personalized session volume) | **No self-serve free trial** (Custom sales demo and tailored proof-of-concept pilot only) | Price Drop campaigns that monitor visitor interaction history and trigger algorithmic flash sale discounts and countdown messaging per user. |
+| **[BigCommerce Staging](https://www.bigcommerce.com/)** | **~$40M Market Cap** (~$340M ARR) | **$29/month** (Core plan paid annually; $39/month month-to-month, scaling to Enterprise at ~$1,499/month) | **15-day free trial** with full store configuration, integration testing, and sandbox capabilities (no credit card required) | Dedicated staging environment for testing high-traffic promotion rules, scheduled product launches, and automated price rollbacks. |
+| **[Kameleoon](https://www.kameleoon.com/)** | **~$30M Valuation** (Venture-backed Series A) | **$495/month** (PBX Starter plan; up to 50,000 Monthly Tracked Users and 10 experiments/month) | **30-day free trial** (Starter trial tier with up to 5,000 MTUs and 10 AI credits; no credit card required) | Predictive flash sale audience targeting, automated behavioral triggers, and server-side feature experimentation. |
+| **[Monetate](https://monetate.com/)** | **~$30M–$50M Valuation** (Centre Lane Partners) | **~$4,000/month** (~$50,000/year annual enterprise agreement based on session volume) | **No free trial** (Strictly annual enterprise contracts; requires tailored sales demo) | Fixed start/stop promotions, dayparting scheduling, and Dynamic Testing to automatically exploit winning promotional variants in tight flash windows. |
+
+---
+
+## Open-Source GitHub Projects
+
+Curated open-source projects for building custom, self-hosted flash sale infrastructure—sorted by **GitHub Star Count** descending.
+
+### High-Concurrency Inventory & Drops
+
+| Repository | Stars | Language / Stack | Architecture & Description |
+| :--- | :--- | :--- | :--- |
+| **[qiurunze123/miaosha](https://github.com/qiurunze123/miaosha)** | [![Stars](https://img.shields.io/github/stars/qiurunze123/miaosha?style=social&color=white)](https://github.com/qiurunze123/miaosha/stargazers) | Java, Spring Boot, Redis, RabbitMQ | Comprehensive enterprise flash sale blueprint: multi-layer caching, Redis pre-decrement, asynchronous message queue order generation, and Nginx Lua traffic limiting. |
+| **[zaiyunduan123/springboot-seckill](https://github.com/zaiyunduan123/springboot-seckill)** | [![Stars](https://img.shields.io/github/stars/zaiyunduan123/springboot-seckill?style=social&color=white)](https://github.com/zaiyunduan123/springboot-seckill/stargazers) | Java, Spring Boot, Redis, Guava | High-concurrency flash sale system implementing Guava rate limiting, Redis distributed locking, RabbitMQ queuing, and MD5 salt password encryption. |
+| **[codingXiaxw/seckill](https://github.com/codingXiaxw/seckill)** | [![Stars](https://img.shields.io/github/stars/codingXiaxw/seckill?style=social&color=white)](https://github.com/codingXiaxw/seckill/stargazers) | Java, Spring, MyBatis, MySQL | Canonical reference implementation of transactional flash sale execution with stored procedures, cache warmups, and row-level lock optimization. |
+| **[hfbin/Seckill](https://github.com/hfbin/Seckill)** | [![Stars](https://img.shields.io/github/stars/hfbin/Seckill?style=social&color=white)](https://github.com/hfbin/Seckill/stargazers) | Java, Spring Boot, Redis, RabbitMQ | Production-focused flash sale backend with dynamic salt hashing, captcha bot verification, and Redis stock pre-decrementing. |
+| **[qqxx6661/miaosha](https://github.com/qqxx6661/miaosha)** | [![Stars](https://img.shields.io/github/stars/qqxx6661/miaosha?style=social&color=white)](https://github.com/qqxx6661/miaosha/stargazers) | Java, Spring Boot, Redis, Kafka | Step-by-step flash sale architectural tutorial covering distributed session management, Redis cache warming, and Kafka transaction messaging. |
+| **[chanjarster/artemis-disruptor-miaosha](https://github.com/chanjarster/artemis-disruptor-miaosha)** | [![Stars](https://img.shields.io/github/stars/chanjarster/artemis-disruptor-miaosha?style=social&color=white)](https://github.com/chanjarster/artemis-disruptor-miaosha/stargazers) | Java, LMAX Disruptor | Non-Redis in-memory flash sale engine leveraging the ultra-low-latency LMAX Disruptor ring buffer to process extreme surges without external caching. |
+| **[ThoughtsBeta/flash-sale](https://github.com/ThoughtsBeta/flash-sale)** | [![Stars](https://img.shields.io/github/stars/ThoughtsBeta/flash-sale?style=social&color=white)](https://github.com/ThoughtsBeta/flash-sale/stargazers) | Java, Spring Cloud, Redis | Multi-pattern high-concurrency flash sale engine comparing distributed locks, database optimistic locking, and message queue consumer patterns. |
+| **[l72683876-beep/kavach-engine](https://github.com/l72683876-beep/kavach-engine)** | [![Stars](https://img.shields.io/github/stars/l72683876-beep/kavach-engine?style=social&color=white)](https://github.com/l72683876-beep/kavach-engine/stargazers) | Go, Python/JS SDKs | Rigorously benchmarked inventory-reservation engine: 2M requests at 3,077 req/s on a 2-core machine with zero double-sells and crash-recovery via log replay. |
+| **[yaumulmajid/zero-oversell-commerce](https://github.com/yaumulmajid/zero-oversell-commerce)** | [![Stars](https://img.shields.io/github/stars/yaumulmajid/zero-oversell-commerce?style=social&color=white)](https://github.com/yaumulmajid/zero-oversell-commerce/stargazers) | Java 21, Spring Boot, Kafka, PostgreSQL | Clean architectural microservice demonstrating conditional stock decrement (`UPDATE ... WHERE qty > 0`) with transactional outbox and expiry handling. |
+| **[FlashCore](https://pypi.org/project/syeedalireza-flashcore/0.1.0/)** | *(PyPI Package)* | Python, FastAPI, Redis Lua | High-concurrency flash sale drop engine utilizing atomic Redis Lua scripts to eliminate race conditions, paired with PostgreSQL eventual consistency and Docker Compose. |
+
+### Feature Flags & Campaign Schedulers
+
+| Repository | Stars | Language / Stack | Architecture & Description |
+| :--- | :--- | :--- | :--- |
+| **[growthbook/growthbook](https://github.com/growthbook/growthbook)** | [![Stars](https://img.shields.io/github/stars/growthbook/growthbook?style=social&color=white)](https://github.com/growthbook/growthbook/stargazers) | TypeScript, Node.js, React | Leading open-source feature flagging and A/B testing platform with scheduled rollouts, experiment tracking, and user segmentation for drops. |
+| **[Flagsmith/flagsmith](https://github.com/Flagsmith/flagsmith)** | [![Stars](https://img.shields.io/github/stars/Flagsmith/flagsmith?style=social&color=white)](https://github.com/Flagsmith/flagsmith/stargazers) | Python, Django, PostgreSQL | Complete self-hosted feature flag and remote configuration platform with scheduling, multivariate flags, and segments for gating sale availability. |
+| **[philiprehberger/laravel-feature-flags](https://github.com/philiprehberger/laravel-feature-flags)** | [![Stars](https://img.shields.io/github/stars/philiprehberger/laravel-feature-flags?style=social&color=white)](https://github.com/philiprehberger/laravel-feature-flags/stargazers) | PHP, Laravel | Lightweight feature flag package supporting time-scheduled flags (`enabled_from`, `enabled_until`) and percentage rollouts for timed drops. |
+| **[jewel998/config](https://github.com/jewel998/config)** | [![Stars](https://img.shields.io/github/stars/jewel998/config?style=social&color=white)](https://github.com/jewel998/config/stargazers) | TypeScript, Firebase | Lightweight, serverless feature flag alternative to commercial flag platforms with scheduled flag changes and client/server SDKs. |
+
+### Promotion Rule Engines
+
+| Repository | Stars | Language / Stack | Architecture & Description |
+| :--- | :--- | :--- | :--- |
+| **[weijunlike/rule-engine](https://github.com/weijunlike/rule-engine)** | [![Stars](https://img.shields.io/github/stars/weijunlike/rule-engine?style=social&color=white)](https://github.com/weijunlike/rule-engine/stargazers) | PHP, Composer | Cart promotion rule engine supporting tiered discounts, member pricing, and an independent rule mode tailored specifically for flash sales and single-coupon locks. |
+| **[jerry-maheswara-github/promotion_kit](https://github.com/jerry-maheswara-github/promotion_kit)** | [![Stars](https://img.shields.io/github/stars/jerry-maheswara-github/promotion_kit?style=social&color=white)](https://github.com/jerry-maheswara-github/promotion_kit/stargazers) | Rust, Cargo | High-performance Rust library for dynamic promotional rule evaluation, voucher validation, usage quota enforcement, and time-window restrictions. |
+
+### Full-Stack E-Commerce & Mall Implementations
+
+| Repository | Stars | Language / Stack | Architecture & Description |
+| :--- | :--- | :--- | :--- |
+| **[yudaocode/yudao-mall-uniapp](https://github.com/yudaocode/yudao-mall-uniapp)** | [![Stars](https://img.shields.io/github/stars/yudaocode/yudao-mall-uniapp?style=social&color=white)](https://github.com/yudaocode/yudao-mall-uniapp/stargazers) | Vue 3, Uniapp, TypeScript | 100% open-source mobile mall frontend with native support for flash sales (秒杀), group buying, countdown timers, coupons, and live shopping. |
+| **[newbee-ltd/newbee-mall-plus](https://github.com/newbee-ltd/newbee-mall-plus)** | [![Stars](https://img.shields.io/github/stars/newbee-ltd/newbee-mall-plus?style=social&color=white)](https://github.com/newbee-ltd/newbee-mall-plus/stargazers) | Java, Spring Boot, Vue | End-to-end e-commerce system featuring integrated flash sale modules, coupon distribution, payment integration, and inventory locking. |
+
+---
+
+## Architecture Blueprint
+
+Building a resilient, zero-oversell flash sale system requires a multi-tier defense architecture:
+
+```
+[ Incoming Surge Traffic ]
+          │
+          ▼
+┌─────────────────────────────────┐
+│ 1. Edge & Virtual Waiting Room  │  --> Rate limiting, CAPTCHA, Cloudflare/Nginx Lua queues
+└────────────────┬────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────┐
+│ 2. Campaign & Feature Gating   │  --> Scheduled flags (LaunchDarkly, GrowthBook, Flagsmith)
+└────────────────┬────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────┐
+│ 3. Atomic In-Memory Reservation │  --> Redis Lua / Kavach Engine / Go channels (Zero Overselling)
+└────────────────┬────────────────┘
+                 │ (Async Event)
+                 ▼
+┌─────────────────────────────────┐
+│ 4. Message Broker & Persistence │  --> Kafka / RabbitMQ -> Transactional DB (PostgreSQL / MySQL)
+└─────────────────────────────────┘
+```
+
+1. **Edge Protection**: Absorb 90% of repeated polling traffic via CDN caching and virtual waiting rooms.
+2. **Scheduled Activation**: Open product pages down to the exact second via synchronized feature flag schedules.
+3. **Atomic Decrement**: Never issue `SELECT ... FOR UPDATE` directly to relational databases during peak spikes. Use atomic Redis Lua scripts or memory-mapped log engines like **Kavach Engine**.
+4. **Asynchronous Fulfillment**: Push confirmed reservations to Kafka/RabbitMQ for decoupled payment processing, cart timeout expiration workers, and final DB persistence.
+
+---
+
+## How to Contribute
+
+1. Fork this repository.
+2. Add your tool or library following the table formatting conventions:
+   - Provide exact pricing and free tier/trial limits for SaaS products.
+   - Include official GitHub stargazer badges (`style=social&color=white`) linking to the stargazers page for open-source repositories.
+3. Keep descriptions concise, factual, and architecturally focused.
+4. Submit a Pull Request.
+
+---
+
+## Disclaimer
+
+- This list is community-curated for informational purposes and does not constitute commercial endorsement.
+- Flash sale systems handling payment transactions and customer identities must adhere to PCI DSS and local data compliance regulations.
+- Inventory guarantees must be validated under load testing (e.g., k6, Locust, or JMeter) before production deployment.
+
+---
+
+**Maintained by the open-source community for e-commerce architects, high-concurrency engineers, and DevOps teams.**
