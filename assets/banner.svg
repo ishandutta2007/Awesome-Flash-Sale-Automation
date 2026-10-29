@@ -187,7 +187,7 @@
   <g class="pill-4" transform="translate(850, 290)">
     <rect width="210" height="40" rx="20" fill="#1e293b" stroke="#a855f7" stroke-width="1.5" />
     <circle cx="22" cy="20" r="6" fill="#a855f7" />
-    <text x="36" y="25" class="badge-pill-text">🛡️ Bot Throttling & Queue</text>
+    <text x="36" y="25" class="badge-pill-text">🛡️ Bot Throttling &amp; Queue</text>
   </g>
 
   <!-- Dynamic Lightning Bolt Icon (Animated Glow) -->
