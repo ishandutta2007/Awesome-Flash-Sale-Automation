@@ -75,7 +75,7 @@ The table below lists leading commercial SaaS and hosted platforms for flash sal
 
 ## 💻 Open-Source GitHub Projects
 
-Curated open-source projects for building custom, self-hosted flash sale infrastructure—sorted by **GitHub Stars_Count** descending.
+Curated open-source projects for building custom, self-hosted flash sale infrastructure—sorted by **GitHub_Stars_Count** descending.
 
 ### 🚀 High-Concurrency Inventory & Drops
 
